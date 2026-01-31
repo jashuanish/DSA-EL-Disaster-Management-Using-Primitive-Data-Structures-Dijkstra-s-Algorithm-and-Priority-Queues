@@ -7,6 +7,7 @@
 [![React](https://img.shields.io/badge/React-19.2+-cyan.svg)](https://reactjs.org/)
 [![Leaflet](https://img.shields.io/badge/Leaflet-1.9.4-green.svg)](https://leafletjs.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+<img width="2559" height="1488" alt="image" src="https://github.com/user-attachments/assets/97451db7-ecf1-4df7-9c0a-f48d50088c4f" />
 
 ---
 
