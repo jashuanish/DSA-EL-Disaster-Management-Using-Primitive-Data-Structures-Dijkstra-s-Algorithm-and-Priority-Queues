@@ -82,6 +82,11 @@ def get_alert(simulate: bool = False):
     return {"alert": predictor.get_alert()}
 
 
+@app.get("/weather")
+def get_weather():
+    return {"weather": predictor.get_latest_readings()}
+
+
 
 # -------------------------------------------------
 # DANGER ZONES
@@ -98,9 +103,7 @@ def get_zones(simulate: bool = False):
         }
     else:
         return {
-            "zones": [
-                {"type": "flood", "center": NODES["C"], "radius": 400}
-            ]
+            "zones": []
         }
 
 
@@ -179,3 +182,37 @@ def get_graph():
         "nodes": NODES,
         "graph": GRAPH
     }
+
+# -------------------------------------------------
+# SIMULATION ENDPOINT (MIGRATED FROM FRONTEND)
+# -------------------------------------------------
+from routing.simulation import build_simulation_graph, run_simulation_dijkstra
+from pydantic import BaseModel
+from typing import List, Dict, Any
+
+class SimulationPayload(BaseModel):
+    start: List[float] # [lat, lng]
+    shelters: List[Dict[str, Any]] # [{id, position: [lat, lng]}]
+    disasters: List[Dict[str, Any]] # [{id, position: [lat, lng], radius}]
+
+@app.post("/simulation/path")
+def calculate_simulation_path(payload: SimulationPayload):
+    # 1. Build the dynamic graph (injecting nodes)
+    sim_nodes, sim_graph = build_simulation_graph(
+        NODES, 
+        GRAPH, 
+        payload.start, 
+        payload.shelters, 
+        payload.disasters
+    )
+    
+    # 2. Run Dijkstra with step recording
+    result = run_simulation_dijkstra(
+        sim_nodes, 
+        sim_graph, 
+        "USER_START", 
+        "SHELTER_", 
+        payload.disasters
+    )
+    
+    return result

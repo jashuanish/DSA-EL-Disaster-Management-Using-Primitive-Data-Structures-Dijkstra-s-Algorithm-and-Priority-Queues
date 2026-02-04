@@ -7,5 +7,5 @@ COUNTRY_CODE = "IN"
 # Polling interval (seconds)
 WEATHER_POLL_INTERVAL = 10
 
-SIMULATION_MODE = True
+SIMULATION_MODE = False
 

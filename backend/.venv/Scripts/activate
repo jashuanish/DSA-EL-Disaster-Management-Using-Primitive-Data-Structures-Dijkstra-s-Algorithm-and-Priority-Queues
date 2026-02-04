@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\jashu\OneDrive\Desktop\DSA EL\disaster-management\backend\.venv"
+VIRTUAL_ENV="D:\projects\el\dsa\DSA-EL-Disaster-Management-Using-Primitive-Data-Structures-Dijkstra-s-Algorithm-and-Priority-Queues\backend\.venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

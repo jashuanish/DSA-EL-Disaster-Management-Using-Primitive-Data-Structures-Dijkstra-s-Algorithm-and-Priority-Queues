@@ -31,3 +31,16 @@ class DisasterPredictor:
         if self.alerts:
             return heapq.heappop(self.alerts)
         return None
+
+    def get_latest_readings(self):
+        rain = self.store.get("rain")
+        if not rain:
+            return None
+        
+        return {
+            "rain": rain[-1],
+            "water": self.store.get("water")[-1],
+            "temp": self.store.get("temp")[-1],
+            "humidity": self.store.get("humidity")[-1],
+            "wind": self.store.get("wind")[-1]
+        }

@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\jashu\OneDrive\Desktop\DSA EL\disaster-management\backend\.venv
+set VIRTUAL_ENV=D:\projects\el\dsa\DSA-EL-Disaster-Management-Using-Primitive-Data-Structures-Dijkstra-s-Algorithm-and-Priority-Queues\backend\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 
